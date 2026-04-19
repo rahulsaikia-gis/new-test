@@ -1,0 +1,132 @@
+create database test_db;
+
+use test_db;
+
+create table pen_list(
+name varchar (50),
+price int primary key,
+quantity int not null);
+
+insert into pen_list values("writometer",25,3),
+insert into pen_list values("cello",10,5),
+insert into pen_list values("pilot",50,1),
+insert into pen_list values("unomax",15,20);
+
+create table student(
+rollno int primary key,
+name varchar(50)
+);
+
+insert into student 
+(rollno, name)
+values
+(004,"xin xinping"),
+(005,"Vladimir putin");
+
+
+
+
+create database abcd;
+use  abcd;
+
+create table computer_list(
+serial_no int not null,
+name varchar (100),
+RAM varchar (15)
+);
+
+insert into computer_list
+(serial_no,name,RAM)
+values
+(1, "intel i3", "8GB"),
+(2, "intel i7", "16GB"),
+(3, "intel i5", "12GB");
+
+create table temp1(
+id int,
+name varchar(20),
+city varchar(50),
+primary key(id, name)
+);
+
+create database college;
+use college;
+
+create table student(
+rollno int primary key,
+name varchar(30),
+marks int not null,
+grade varchar(10),
+city varchar(20)
+);
+
+insert into student
+(rollno, name, marks, grade, city)
+values
+(101, "anil", 78, "C", "Pune"),
+(102, "bhumika", 93, "A", "Mumbai"),
+(103, "chetam", 85, "B", "Mumbai"),
+(104, "dhruv", 96, "A", "Delhi"),
+(105, "emanuel", 12, "F", "Delhi"),
+(106, "farah", 82, "B", "Delhi");
+
+
+SELECT * 
+FROM student
+WHERE marks+10 >100;
+
+select * from student where marks <90;
+
+select max(marks) from student;
+
+select avg(marks) from student;
+
+select city, avg(marks)
+from student 
+group by  city 
+order by city desc;
+
+select city, count(rollno) 
+from student
+group by city
+having max(marks)>90;
+
+
+
+
+create table payments(
+customer_id int not null,
+customer varchar (50),
+mode varchar (50),
+city varchar (20)
+);
+
+insert into payments
+(customer_id, customer, mode, city)
+values
+(101, "Olivia Bernett", "Netbanking", "Portland"),
+(102, "Etha Sinclair", "Credit Card", "Miami"),
+(103, "Maya Hermanndez", "Credit Card", "Seattle"),
+(104, "Liam Donovan", "Netbanking", "Denver"),
+(105, "Sophia Nguyen", "Credit Card", "New Orleans"),
+(106, "Caleb Foster", "Debit Card", "Minneapollis"),
+(107, "Avia Patel", "Debit Card", "Phoenix"),
+(108, "Lucas Carter", "Netbanking", "Boston"),
+(109, "Isabella Martinez", "Netbanking", "Nashvile"),
+(110, "Jaskson Brooks", "Credit Card", "Boston");
+
+select * from payments;
+
+select mode, count(customer)
+from payments
+group by mode;
+
+select * from payments;
+
+update payments
+set mode = "UPI"
+where mode = "Netbanking";
+
+set sql_safe_updates=0
+
+
